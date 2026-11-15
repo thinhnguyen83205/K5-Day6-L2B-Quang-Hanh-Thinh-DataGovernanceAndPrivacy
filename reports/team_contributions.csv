@@ -1,6 +1,4 @@
 member,git_author_name,git_email,role,modules_files,commit_shas,evidence_note,presenter
-Member 1,,,Lead / Integrator,src/main.py; configs/,,,
-Member 2,,,Data & fixtures,fixtures/; tools/,,,
-Member 3,,,Core algorithm,src/pipeline.py,,,
-Member 4,,,QA / metric,tests/; reports/metrics_*.json,,,
-Member 5,,,Human review + report,reports/group_report.md; demo/,,,
+Member 1 :Nguyễn Tiến Thịnh MSV : 2A202603354 : Feature extraction + QA/review + report,src/t02_features.py; tests/test_t02_scoring.py; out/poc/review_queue.csv; out/poc/contact_sheet.html; reports/group_report.md,,Review queue/contact sheet and decision-log checks; compile and write group report,
+Member 2,Nguyễn Đức Hạnh MSV: 2A202603344,Baseline + group scoring,src/t02_scoring.py; src/t02_baseline.py; src/t02_poc.py; tools/t02_eval_dev.py; tools/t02_selftest.py,,Implement scoring/baseline; analyze false alarms and self-test,
+Member 3,,,Pipeline integration + E2E evaluation,src/pipeline.py; out/poc/ranked_review.csv; reports/metrics_baseline.json; reports/metrics_poc.json; reports/table1_baseline_vs_poc.md,,Integrate score_images and run E2E/evaluation,

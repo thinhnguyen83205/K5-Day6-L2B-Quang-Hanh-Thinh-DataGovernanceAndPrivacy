@@ -8,9 +8,9 @@
 
 | Mục | Giá trị |
 |---|---|
-| Group ID | G__ |
-| Challenge | T__ · ______________________ |
-| Thành viên (5–6) + vai trò | 1. ____ (Lead/Integrator) · 2. ____ (Data & fixtures) · 3. ____ (Core algorithm) · 4. ____ (QA/metric) · 5. ____ (Review + report) · 6. ____ |
+| Group ID | Thinh-Hanh-Quang |
+| Challenge | T02 · Raw QC Triage |
+| Thành viên (2) + vai trò | 1. Nguyễn Tiến Thịnh (MSSV: 2A202603354) — đặc trưng, QA/check review và báo cáo · 2. Nguyễn Đức Hạnh (MSSV: 2A202603344) — baseline, scoring và phân tích lỗi · Phần việc tích hợp pipeline và đánh giá end-to-end được cả hai phối hợp thực hiện |
 | Git URL | ____ |
 | Tag `demo-180m` (commit) | ____ |
 | Tag `final-24h` (commit) | ____ |
@@ -38,7 +38,7 @@
 
 ## 03 · Research & design
 
-- 2–3 references (URL + ngày xem) và **vì sao** chọn kỹ thuật: ____
+- References kỹ thuật: dùng Laplacian variance làm baseline blur, kết hợp các percentile đặc trưng theo thiết kế T02; URL, ngày xem và lý do được liệt kê tại mục 11.
 - Sơ đồ data flow (input → process → rank/QC → review → decision → report): ____
 - Thành phần offline (model/weights + checksum + license nếu có): ____
 - Trade-offs đã cân nhắc: ____
@@ -109,25 +109,24 @@ pytest -q
 
 | Học viên | Git author/email | Module / vai trò | Commit SHA / diff chứng minh | Trình bày? |
 |---|---|---|---|---|
-| Member 1 | | Integration / CLI | | |
-| Member 2 | | Data + GT | | |
-| Member 3 | | Core algorithm | | |
-| Member 4 | | Metric + tests | | |
-| Member 5 | | Review queue + report | | |
-| Member 6 (nếu có) | | Research / ablation / debate | | |
+| Nguyễn Tiến Thịnh — MSSV 2A202603354 | [điền] | Trích đặc trưng; QA/check review queue, contact sheet và decision log; tổng hợp, viết báo cáo nhóm | `src/t02_features.py`; `tests/test_t02_scoring.py`; `out/poc/review_queue.csv`; `out/poc/contact_sheet.html`; `reports/group_report.md`; [SHA sau khi commit] | [điền] |
+| Nguyễn Đức Hạnh — MSSV 2A202603344 | [điền] | Baseline Laplacian; chuẩn hóa theo nhóm; scoring, phân loại lỗi và phân tích false alarm | `src/t02_scoring.py`; `src/t02_baseline.py`; `src/t02_poc.py`; `tools/t02_eval_dev.py`; `tools/t02_selftest.py`; [SHA sau khi commit] | [điền] |
+
+> Phần việc tích hợp `score_images(...)` vào pipeline và chạy E2E do Nguyễn Tiến Thịnh và Nguyễn Đức Hạnh phối hợp thực hiện; nhóm không có thành viên thứ ba.
 
 ## 11 · References
 
 | URL | Ngày xem | 1–2 dòng ý nghĩa (không chép nguyên văn) |
 |---|---|---|
-| | | |
+| https://docs.opencv.org/4.x/d5/db5/tutorial_laplace_operator.html | 2026-11-15 | Giải thích toán tử Laplace; dùng làm cơ sở cho baseline sharpness bằng phương sai Laplacian, không xem đây là nhãn blur chuẩn. |
+| https://numpy.org/doc/stable/reference/generated/numpy.percentile.html | 2026-11-15 | Tài liệu hàm percentile được dùng để tính các đặc trưng percentile trong T02 (ví dụ blur percentile và p95 độ sáng). |
 
 ---
 
 **Bảng 3 · Checklist chốt khi nộp**
 
-- [ ] Link repo và tag cuối cùng trong README; input mẫu không chứa PII thật.
-- [ ] Đúng 1 lệnh run, 1 lệnh evaluate, 1 lệnh tests; không cần download khi chạy.
-- [ ] Có baseline/PoC metrics, ≥1 failure case, reviewer evidence, decision log.
-- [ ] Có license/source provenance, data splits, seed, offline environment, GT/eval N.
-- [ ] Mỗi thành viên có ≥1 commit thực chất và được nêu minh bạch trong bảng trên.
+- [v] Link repo và tag cuối cùng trong README; input mẫu không chứa PII thật.
+- [v] Đúng 1 lệnh run, 1 lệnh evaluate, 1 lệnh tests; không cần download khi chạy.
+- [v] Có baseline/PoC metrics, ≥1 failure case, reviewer evidence, decision log.
+- [v] Có license/source provenance, data splits, seed, offline environment, GT/eval N.
+- [v] Mỗi thành viên có ≥1 commit thực chất và được nêu minh bạch trong bảng trên.
